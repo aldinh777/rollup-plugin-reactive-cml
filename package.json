@@ -1,0 +1,11 @@
+{
+  "name": "@aldinh777/rollup-plugin-reactive-cml",
+  "version": "0.1.0",
+  "description": "Reactive CML Plugin for Rollup",
+  "main": "rollup-plugin-reactive-cml.js",
+  "author": "aldinh777",
+  "license": "ISC",
+  "dependencies": {
+    "@aldinh777/reactive-cml": "^0.1.1"
+  }
+}
