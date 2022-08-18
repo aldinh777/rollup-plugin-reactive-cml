@@ -5,7 +5,7 @@
   "main": "rollup-plugin-reactive-cml.js",
   "author": "aldinh777",
   "license": "ISC",
-  "dependencies": {
-    "@aldinh777/reactive-cml": "^0.2.0"
+  "devDependencies": {
+    "@aldinh777/reactive-cml": "^0.2.2"
   }
 }
