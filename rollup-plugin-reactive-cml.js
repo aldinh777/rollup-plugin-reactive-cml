@@ -1,7 +1,7 @@
-import { extname } from 'path';
-import { parseReactiveCML } from '@aldinh777/reactive-cml/parser';
+const { extname } = require('path');
+const { parseReactiveCML } = require('@aldinh777/reactive-cml/parser');
 
-export default function () {
+module.exports = function () {
     return {
         name: 'parse-reactive',
         transform(source, id) {
