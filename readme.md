@@ -7,7 +7,13 @@ import reactiveCML from '@aldinh777/rollup-plugin-cml';
 
 export default {
     plugins: [
-        reactiveCML()
-    ],
+        reactiveCML({
+            outputJsFile: false,
+            parserOptions: {
+                trimCML: true,
+                mode: 'import'
+            }
+        })
+    ]
 };
 ```
