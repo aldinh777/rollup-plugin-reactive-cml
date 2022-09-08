@@ -2,22 +2,27 @@ const { writeFileSync } = require('fs');
 const { extname, basename, dirname, join } = require('path');
 const { parseReactiveCML } = require('@aldinh777/reactive-cml/parser');
 
-module.exports = function (
-    opts = {
-        parserOptions: {
-            trimCML: true,
-            mode: 'import'
-        },
-        outputJsFile: false
-    }
-) {
+module.exports = function (opts = {}) {
+    const parserOptions = opts.parserOptions || {};
+    const outputJsFile = opts.outputJsFile;
+    const disableRelativeImports = opts.disableRelativeImports;
+
     return {
         name: 'parse-reactive',
         transform(source, id) {
             const ext = extname(id);
             if (ext === '.rc') {
-                const output = parseReactiveCML(source, opts.parserOptions);
-                if (opts.outputJsFile) {
+                const parserOptionsClone = Object.assign({}, parserOptions);
+                if (disableRelativeImports) {
+                    delete parserOptionsClone.relativeImports;
+                } else {
+                    if (!parserOptionsClone.relativeImports) {
+                        parseReactiveCML.relativeImports = {};
+                    }
+                    parserOptionsClone.relativeImports.filename = id;
+                }
+                const output = parseReactiveCML(source, parserOptionsClone);
+                if (outputJsFile) {
                     const dir = dirname(id);
                     const base = basename(id);
                     const file = join(dir, base.substring(0, base.length - ext.length) + '.js');
@@ -28,4 +33,4 @@ module.exports = function (
             return null;
         }
     };
-}
+};

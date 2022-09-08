@@ -1,13 +1,10 @@
 import { Plugin } from 'rollup';
-
-interface RCMLParserOptions {
-    mode?: 'import' | 'require';
-    trimCML?: boolean;
-}
+import { RCMLParserOptions } from '@aldinh777/reactive-cml/parser'
 
 interface RCMLPluginOptions {
     parserOptions?: RCMLParserOptions;
     outputJsFile?: boolean;
+    disableRelativeImports?: boolean;
 }
 
 export default function(opts: RCMLPluginOptions): Plugin;
