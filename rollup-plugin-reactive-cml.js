@@ -17,7 +17,7 @@ module.exports = function (opts = {}) {
                     delete parserOptionsClone.relativeImports;
                 } else {
                     if (!parserOptionsClone.relativeImports) {
-                        parseReactiveCML.relativeImports = {};
+                        parserOptionsClone.relativeImports = {};
                     }
                     parserOptionsClone.relativeImports.filename = id;
                 }
