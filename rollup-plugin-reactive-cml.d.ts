@@ -4,6 +4,7 @@ import { RCMLParserOptions } from '@aldinh777/reactive-cml/parser'
 interface RCMLPluginOptions {
     parserOptions?: RCMLParserOptions;
     outputJsFile?: boolean;
+    useDefaultLibs?: boolean;
     disableRelativeImports?: boolean;
 }
 
