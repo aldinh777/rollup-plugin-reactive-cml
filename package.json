@@ -6,7 +6,7 @@
   "author": "aldinh777",
   "license": "ISC",
   "devDependencies": {
-    "@aldinh777/reactive-cml": "^0.10.8",
+    "@aldinh777/reactive-cml": "^0.10.12",
     "rollup": "^2.78.1"
   }
 }
