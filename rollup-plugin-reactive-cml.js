@@ -11,7 +11,7 @@ const defaultLibraries = [
         '@aldinh777/reactive/collection',
         ['statelist', 'statemap', 'StateList', 'StateMap', 'StateCollection']
     ],
-    ['@aldinh777/reactive-cml/dom/reactive-util', ['stateToggle']]
+    ['@aldinh777/reactive-cml/dom/reactive-util', ['stateToggle', 'stateLocalStorage']]
 ];
 
 module.exports = function (opts = {}) {
