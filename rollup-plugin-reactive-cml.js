@@ -3,14 +3,12 @@ const { extname, basename, dirname, join } = require('path');
 const { parseReactiveCML } = require('@aldinh777/reactive-cml/parser');
 
 const defaultLibraries = [
-    [
-        '@aldinh777/reactive/state',
-        ['state', 'observe', 'observeAll', 'stateObserve', 'stateObserveAll', 'State']
-    ],
-    [
-        '@aldinh777/reactive/collection',
-        ['statelist', 'statemap', 'StateList', 'StateMap', 'StateCollection']
-    ],
+    ['@aldinh777/reactive', ['state', 'observe', 'observeAll', 'stateObserve', 'stateObserveAll']],
+    ['@aldinh777/reactive/util/collection', ['statelist', 'statemap']],
+    ['@aldinh777/reactive/state/State', 'State'],
+    ['@aldinh777/reactive/collection/StateCollection', 'StateCollection'],
+    ['@aldinh777/reactive/collection/StateList', 'StateList'],
+    ['@aldinh777/reactive/collection/StateMap', 'StateMap'],
     ['@aldinh777/reactive-cml/dom/reactive-util', ['stateToggle', 'stateLocalStorage']]
 ];
 
