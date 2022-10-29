@@ -13,13 +13,20 @@ interface RCMLPluginOptions {
     /**
      * Auto import specific dependencies for instant usage
      *
-     * Default Dependencies:
-     * - { state, observe, observeAll, stateObserve, stateObserveAll } from '@aldinh777/reactive'
-     * - { statelist, statemap } from '@aldinh777/reactive/util/collection'
-     * - { mapview, filterview, sortview } from '@aldinh777/reactive/util/view'
-     * - { stateToggle, stateLocalStorage } from '@aldinh777/reactive-cml/dom/reactive-util'
-     *
      * default: __false__
+     *
+     * Default Dependencies:
+     * - {
+     *      state,
+     *      observe,
+     *      observeAll,
+     *      stateObserve,
+     *      stateObserveAll,
+     *      stateToggle,
+     *      stateLocalStorage
+     *   } from '@aldinh777/reactive-utils'
+     * - { statelist, statemap } from '@aldinh777/reactive-utils/collection'
+     * - { mapview, filterview, sortview } from '@aldinh777/reactive-utils/collection/view'
      */
     useDefaultLibs?: boolean;
     /**
