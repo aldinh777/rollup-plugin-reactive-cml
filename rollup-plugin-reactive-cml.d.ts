@@ -25,8 +25,13 @@ interface RCMLPluginOptions {
      *      stateToggle,
      *      stateLocalStorage
      *   } from '@aldinh777/reactive-utils'
-     * - { statelist, statemap } from '@aldinh777/reactive-utils/collection'
-     * - { mapview, filterview, sortview } from '@aldinh777/reactive-utils/collection/view'
+     * - {
+     *      statelist,
+     *      statemap,
+     *      mapview,
+     *      filterview,
+     *      sortview
+     *   } from '@aldinh777/reactive-utils/collection'
      */
     useDefaultLibs?: boolean;
     /**

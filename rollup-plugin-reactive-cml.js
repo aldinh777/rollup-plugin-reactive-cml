@@ -15,8 +15,10 @@ const defaultLibraries = [
             'stateLocalStorage'
         ]
     ],
-    ['@aldinh777/reactive-utils/collection', ['statelist', 'statemap']],
-    ['@aldinh777/reactive-utils/collection/view', ['mapview', 'filterview', 'sortview']]
+    [
+        '@aldinh777/reactive-utils/collection',
+        ['statelist', 'statemap', 'mapview', 'filterview', 'sortview']
+    ]
 ];
 
 module.exports = function (opts = {}) {
