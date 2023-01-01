@@ -18,6 +18,10 @@ const defaultLibraries = [
     [
         '@aldinh777/reactive-utils/collection',
         ['statelist', 'statemap', 'mapview', 'filterview', 'sortview']
+    ],
+    [
+        '@aldinh777/reactive-utils/validator',
+        ['isState', 'isMutable', 'isCollection', 'isList', 'isMap']
     ]
 ];
 
@@ -49,7 +53,7 @@ module.exports = function (opts = {}) {
                     }
                     parserOptionsClone.relativeImports.filename = id;
                 }
-                const output = parseReactiveCML(source, parserOptionsClone);
+                const output = parseReactiveCML(source, parserOptionsClone, id);
                 if (outputJsFile) {
                     const dir = dirname(id);
                     const base = basename(id);
