@@ -2,8 +2,8 @@ const { writeFileSync } = require('fs');
 const { extname, basename, dirname, join } = require('path');
 const { parseReactiveCML } = require('@aldinh777/reactive-cml/parser');
 
-const defaultLibraries = [
-    [
+const defaultLibraries = {
+    'reactive-utils': [
         '@aldinh777/reactive-utils',
         [
             'state',
@@ -15,27 +15,34 @@ const defaultLibraries = [
             'stateLocalStorage'
         ]
     ],
-    [
+    'reactive-utils/collection': [
         '@aldinh777/reactive-utils/collection',
         ['statelist', 'statemap', 'mapview', 'filterview', 'sortview']
     ],
-    [
+    'reactive-utils/validator': [
         '@aldinh777/reactive-utils/validator',
         ['isState', 'isMutable', 'isCollection', 'isList', 'isMap']
     ]
-];
+};
 
 module.exports = function (opts = {}) {
     const parserOptions = opts.parserOptions || {};
     const outputJsFile = opts.outputJsFile;
-    const useDefaultLibs = opts.useDefaultLibs;
+    const autoImports = opts.autoImports;
     const disableRelativeImports = opts.disableRelativeImports;
 
-    if (useDefaultLibs) {
-        if (parserOptions.autoImports) {
-            parserOptions.autoImports = parserOptions.autoImports.concat(defaultLibraries);
-        } else {
-            parserOptions.autoImports = defaultLibraries;
+    if (autoImports) {
+        for (const pot of autoImports) {
+            if (!parserOptions.autoImports) {
+                parserOptions.autoImports = [];
+            }
+            if (typeof pot === 'string') {
+                if (defaultLibraries[pot]) {
+                    parserOptions.autoImports = parserOptions.autoImports.concat(defaultLibraries);
+                }
+            } else if (pot instanceof Array) {
+                parserOptions.autoImports = parserOptions.autoImports.concat(pot);
+            }
         }
     }
 
@@ -53,7 +60,7 @@ module.exports = function (opts = {}) {
                     }
                     parserOptionsClone.relativeImports.filename = id;
                 }
-                const output = parseReactiveCML(source, parserOptionsClone, id);
+                const output = parseReactiveCML(source, parserOptionsClone);
                 if (outputJsFile) {
                     const dir = dirname(id);
                     const base = basename(id);
