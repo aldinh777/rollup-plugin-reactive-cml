@@ -38,7 +38,7 @@ module.exports = function (opts = {}) {
             }
             if (typeof pot === 'string') {
                 if (defaultLibraries[pot]) {
-                    parserOptions.autoImports = parserOptions.autoImports.concat(defaultLibraries);
+                    parserOptions.autoImports = parserOptions.autoImports.concat(defaultLibraries[pot]);
                 }
             } else if (pot instanceof Array) {
                 parserOptions.autoImports = parserOptions.autoImports.concat(pot);
