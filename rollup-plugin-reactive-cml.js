@@ -31,27 +31,26 @@ module.exports = function (opts = {}) {
     const autoImports = opts.autoImports;
     const disableRelativeImports = opts.disableRelativeImports;
 
+    if (autoImports instanceof Array) {
+        for (const pot of autoImports) {
+            if (!parserOptions.autoImports) {
+                parserOptions.autoImports = [];
+            }
+            if (typeof pot === 'string') {
+                if (defaultLibraries[pot]) {
+                    parserOptions.autoImports.push(defaultLibraries[pot]);
+                }
+            } else if (pot instanceof Array) {
+                parserOptions.autoImports.push(pot);
+            }
+        }
+    }
+
     return {
         name: 'parse-reactive',
         transform(source, id) {
             const ext = extname(id);
             if (ext === '.rc') {
-                if (autoImports instanceof Array) {
-                    for (const pot of autoImports) {
-                        if (!parserOptions.autoImports) {
-                            parserOptions.autoImports = [];
-                        }
-                        if (typeof pot === 'string') {
-                            if (defaultLibraries[pot]) {
-                                parserOptions.autoImports = parserOptions.autoImports.concat(
-                                    defaultLibraries[pot]
-                                );
-                            }
-                        } else if (pot instanceof Array) {
-                            parserOptions.autoImports = parserOptions.autoImports.concat(pot);
-                        }
-                    }
-                }
                 const parserOptionsClone = Object.assign({}, parserOptions);
                 if (disableRelativeImports) {
                     delete parserOptionsClone.relativeImports;
